@@ -45,8 +45,8 @@
 		</wsdl:operation>
 	</wsdl:binding>
 	<wsdl:service name="MovieService">
-		<wsdl:port binding="tns:MovieBinding" name="Movie">
-			<soap:address location="http://www.example.org/" />
+		<wsdl:port binding="tns:MovieBinding" name="MoviePort">
+			<soap:address location="http://localhost:7800/MovieService" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>
