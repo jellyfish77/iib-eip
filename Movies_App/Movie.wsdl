@@ -23,19 +23,19 @@
 	<wsdl:message name="NewMovieResponse">
 		<wsdl:part element="tns:MovieResponse" name="parameters" />
 	</wsdl:message>
-	<wsdl:portType name="MovieInterface">
-		<wsdl:operation name="NewMovieOperation">
+	<wsdl:portType name="newMoviePortType">
+		<wsdl:operation name="newMovieOperation">
 			<wsdl:input message="tns:NewMovieRequest" />
 			<wsdl:output message="tns:NewMovieResponse" />
 		</wsdl:operation>
 	</wsdl:portType>
-	<wsdl:binding name="MovieBinding" type="tns:MovieInterface">
+	<wsdl:binding name="MovieBinding" type="tns:MoviePortType">
 		<soap:binding style="document"
 			transport="http://schemas.xmlsoap.org/soap/http" />
 		<wsdl:operation name="NewMovieOperation">
 			<!-- SOAPAction: Header of HTTP Requests -->
 			<soap:operation
-				soapAction="http://www.example.org/NewWSDLFile/NewMovieOperation" />
+				soapAction="http://www.example.org/Movie/newMovieOperation" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -45,8 +45,8 @@
 		</wsdl:operation>
 	</wsdl:binding>
 	<wsdl:service name="MovieService">
-		<wsdl:port binding="tns:MovieBinding" name="MoviePort">
-			<soap:address location="http://localhost:7800/MovieService" />
+		<wsdl:port binding="tns:MovieBinding" name="Movie">
+			<soap:address location="http://localhost:7800/Movie" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>
