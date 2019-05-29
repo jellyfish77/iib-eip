@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Movies_App</name>
+	<name>Movie_IS</name>
 	<comment></comment>
 	<projects>
+		<project>Schemas</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -16,7 +17,7 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>com.ibm.etools.mft.connector.policy.ui.PolicyBuilder</name>
+			<name>com.ibm.etools.mft.service.ui.serviceApplicationBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -100,9 +101,15 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.connector.policy.ui.PolicyBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>com.ibm.etools.msgbroker.tooling.applicationNature</nature>
+		<nature>com.ibm.etools.msgbroker.tooling.serviceApplicationNature</nature>
 		<nature>com.ibm.etools.msgbroker.tooling.messageBrokerProjectNature</nature>
+		<nature>com.ibm.etools.msgbroker.tooling.applicationNature</nature>
 	</natures>
 </projectDescription>

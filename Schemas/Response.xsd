@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <xsd:element name="Response">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+    <xsd:element ibmSchExtn:docRoot="true" name="Response">
     	<xsd:complexType>
     		<xsd:sequence>
-    			<xsd:element name="Code" type="xsd:int"></xsd:element>
-    			<xsd:element name="Desc" type="xsd:string"></xsd:element>
+    			<xsd:element name="Code" type="xsd:int"/>
+    			<xsd:element name="Desc" type="xsd:string"/>
     		</xsd:sequence>
     	</xsd:complexType>
     </xsd:element>

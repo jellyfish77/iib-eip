@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="gen" version="8.0.5.0" xmlns:map="gen">
+    <input path="mbsharedlib://Schemas/Movie.xsd"/>
+    <output path="mbsharedlib://Schemas/Response.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="MovieOperation_Request_Response_Mapping">
+        <input path="mb:msg(Movie,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_Movie"/>
+        <output path="mb:msg(Response,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_Response"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_Movie/Properties"/>
+            <output path="$ComIbmMessageAssembly_Response/Properties"/>
+            <override>
+                <assign value="{Schemas}">
+                    <output path="$ComIbmMessageAssembly_Response/Properties/MessageSet"/>
+                </assign>
+            </override>
+        </move>
+        <assign value="1">
+            <output path="$ComIbmMessageAssembly_Response/Response/Code"/>
+        </assign>
+        <assign value="Request Ok">
+            <output path="$ComIbmMessageAssembly_Response/Response/Desc"/>
+        </assign>
+    </mappingDeclaration>
+</mappingRoot>
