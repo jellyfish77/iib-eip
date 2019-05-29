@@ -1,52 +1,47 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-	name="Movie" targetNamespace="http://www.example.org/Movie/"
-	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/Movie/"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="">
-	<wsdl:types>		
-		<xsd:schema targetNamespace="http://www.example.org/Movie/">
-			<xsd:element name="MovieResponse">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="out" type="xsd:string" />
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-		</xsd:schema>
-		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-			<xsd:import namespace=''
-				schemaLocation="../Schemas/Movie.xsd">
-			</xsd:import></xsd:schema></wsdl:types>
-	<wsdl:message name="NewMovieRequest">
-		<wsdl:part name="parameters" element="Movie" />
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Movie" targetNamespace="https://github.com/jellyfish77/Movie" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="https://github.com/jellyfish77/Movie" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="MovieBinding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+	<wsdl:types>
+		<xsd:schema targetNamespace="https://github.com/jellyfish77/Movie">
+<xsd:import schemaLocation="Schemas/Movie.xsd">
+			</xsd:import>
+<xsd:import schemaLocation="Schemas/Response.xsd">
+			</xsd:import>
+</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="MovieRequest">
+		<wsdl:part element="Movie" name="parameters"/>
 	</wsdl:message>
-	<wsdl:message name="NewMovieResponse">
-		<wsdl:part element="tns:MovieResponse" name="parameters" />
+	<wsdl:message name="MovieResponse">
+		<wsdl:part element="Response" name="parameters"/>
 	</wsdl:message>
-	<wsdl:portType name="newMoviePortType">
-		<wsdl:operation name="newMovieOperation">
-			<wsdl:input message="tns:NewMovieRequest" />
-			<wsdl:output message="tns:NewMovieResponse" />
+	<wsdl:portType name="MoviePortType">
+		<wsdl:operation name="MovieOperation">
+			<wsdl:input message="tns:MovieRequest"/>
+			<wsdl:output message="tns:MovieResponse"/>
 		</wsdl:operation>
 	</wsdl:portType>
 	<wsdl:binding name="MovieBinding" type="tns:MoviePortType">
-		<soap:binding style="document"
-			transport="http://schemas.xmlsoap.org/soap/http" />
-		<wsdl:operation name="NewMovieOperation">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="MovieOperation">
 			<!-- SOAPAction: Header of HTTP Requests -->
-			<soap:operation
-				soapAction="http://www.example.org/Movie/newMovieOperation" />
+			<soap:operation soapAction="https://github.com/jellyfish77/Movie/MovieOperation"/>
 			<wsdl:input>
-				<soap:body use="literal" />
+				<soap:body use="literal"/>
 			</wsdl:input>
 			<wsdl:output>
-				<soap:body use="literal" />
+				<soap:body use="literal"/>
 			</wsdl:output>
 		</wsdl:operation>
 	</wsdl:binding>
 	<wsdl:service name="MovieService">
 		<wsdl:port binding="tns:MovieBinding" name="Movie">
-			<soap:address location="http://localhost:7800/Movie" />
+			<soap:address location="http://localhost:7800/Movie"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

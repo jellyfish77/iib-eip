@@ -68,3 +68,6 @@ local.properties
 
 # mac specific
 .DS_Store
+
+# don't need IIB import reports
+*.report.txt
