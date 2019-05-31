@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+	<xsd:simpleType name="NullOrInteger">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d*|\s{0}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NullOrFloat">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[-+]?[0-9]*\.?[0-9]+|\s{0}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="nillableDate">
+		<xsd:annotation>
+			<xsd:documentation>Enable null for date</xsd:documentation>
+		</xsd:annotation>
+		<xsd:union memberTypes="xsd:date emptyString"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="emptyString">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element ibmSchExtn:docRoot="true" name="Movie">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Title" type="xsd:string"/>
+				<xsd:element name="ImdbId" type="xsd:string"/>
+				<xsd:element name="Gross" type="NullOrInteger"/>
+				<xsd:element name="Format">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Type" type="xsd:string"/>
+							<xsd:element name="Color" type="xsd:string"/>
+							<xsd:element name="Language" type="xsd:string"/>
+							<xsd:element name="AspectRatio" type="NullOrFloat"/>
+							<xsd:element name="Runtime" type="NullOrInteger"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="Production">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Countries">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element maxOccurs="unbounded" minOccurs="0" name="Country" type="xsd:string"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="Budget" type="NullOrInteger"/>
+							<xsd:element name="Year" type="NullOrInteger"/>
+							<xsd:element minOccurs="0" name="ReleaseDate" type="nillableDate"/>
+							<xsd:element minOccurs="0" name="DvdDate" type="nillableDate"/>
+							<xsd:element name="Website" type="xsd:string"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="Genres">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="unbounded" minOccurs="0" name="Genre" type="xsd:string"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="Plot">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Description" type="xsd:string"/>
+							<xsd:element name="PlotKeywords">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element maxOccurs="unbounded" minOccurs="0" name="PlotKeyword" type="xsd:string"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="Poster" type="xsd:string"/>
+				<xsd:element name="Awards" type="xsd:string"/>
+				<xsd:element name="UserVotes" type="xsd:int"/>
+				<xsd:element name="NumUsersReviewed" type="NullOrInteger"/>
+				<xsd:element name="Rating" type="xsd:string"/>
+				<xsd:element name="ImdbLink" type="xsd:anyURI"/>
+				<xsd:element name="Country" type="xsd:string"/>
+				<xsd:element name="FacebookLikes" type="NullOrInteger"/>
+				<xsd:element name="NumPosterFaces" type="NullOrInteger"/>
+				<xsd:element name="Director">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Name" type="xsd:string"/>
+							<xsd:element name="FacebookLikes" type="NullOrInteger"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="Writers">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="unbounded" minOccurs="0" name="Writer" type="xsd:string"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="NumReviews" type="NullOrInteger"/>
+				<xsd:element name="Cast">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Actors">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element maxOccurs="unbounded" minOccurs="0" name="Actor">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element minOccurs="0" name="Biling" type="xsd:byte"/>
+													<xsd:element name="Name" type="xsd:string"/>
+													<xsd:element minOccurs="0" name="FacebookLikes" type="NullOrInteger"/>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="Ratings">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="unbounded" minOccurs="0" name="Rating">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="Source" type="xsd:string"/>
+										<xsd:element name="Value" type="xsd:string"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

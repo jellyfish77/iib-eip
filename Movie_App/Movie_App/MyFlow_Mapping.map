@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="Movie_App" version="8.0.5.0" xmlns:map="Movie_App">
+    <input path="/Movie.xsd"/>
+    <output path="/Response.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="MyFlow_Mapping">
+        <input path="mb:msg(Movie,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_Movie"/>
+        <output path="mb:msg(Response,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_Response"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_Movie/Properties"/>
+            <output path="$ComIbmMessageAssembly_Response/Properties"/>
+        </move>
+        <assign value="1">
+            <output path="$ComIbmMessageAssembly_Response/Response/Code"/>
+        </assign>
+        <expression>
+            <input path="$ComIbmMessageAssembly_Movie/Movie/Title" var="Title"/>
+            <output path="$ComIbmMessageAssembly_Response/Response/Desc"/>
+            <code lang="xpath">fn:concat(Title,' ok')</code>
+        </expression>
+    </mappingDeclaration>
+</mappingRoot>
